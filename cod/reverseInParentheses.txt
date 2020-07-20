@@ -1,0 +1,27 @@
+Viết hàm đảo ngược các ký tự trong ngoặc đơn (có thể lồng nhau) trong chuỗi đầu vào.
+
+Chuỗi đầu vào sẽ luôn được định dạng tốt với ()s phù hợp .
+
+Thí dụ
+
+Đối với inputString = "(bar)", đầu ra nên được
+reverseInParentheses(inputString) = "rab";
+Đối với inputString = "foo(bar)baz", đầu ra nên được
+reverseInParentheses(inputString) = "foorabbaz";
+Đối với inputString = "foo(bar)baz(blim)", đầu ra nên được
+reverseInParentheses(inputString) = "foorabbazmilb";
+Đối với inputString = "foo(bar(baz))blim", đầu ra nên được
+reverseInParentheses(inputString) = "foobazrabblim".
+Bởi vì "foo(bar(baz))blim"trở thành "foo(barzab)blim"và sau đó "foobazrabblim".
+
+code
+string reverseInParentheses(string inputString) {
+ while(inputString.Contains("("))
+    {
+        int i = inputString.LastIndexOf("(");
+        var s = new string(inputString.Skip(i + 1).TakeWhile(x => x != ')').Reverse().ToArray());
+        var t = "(" + new string(s.Reverse().ToArray()) + ")";
+        inputString = inputString.Replace(t, s);
+    }
+    return inputString;
+}

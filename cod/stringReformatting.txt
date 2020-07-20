@@ -1,0 +1,16 @@
+string stringReformatting(string s, int k) {
+for(int i=0;i<s.Length;i++){
+    if(s[i]=='-'){
+        s=s.Remove(i,1);
+    }
+}
+int c=s.Length;
+if(c==0) return "";
+string h="";
+    if(c%k!=0) h+=s.Substring(0,c%k)+"-";
+  for(int i=c%k;i<c;i=i+k){
+        h+=s.Substring(i,k)+"-";  
+    }
+    h=h.Remove(h.Length-1);
+return h;
+}

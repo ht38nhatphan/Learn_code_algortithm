@@ -1,0 +1,5 @@
+int CountSumOfTwoRepresentations(int n, int l, int r)
+{
+int a = Math.Max(l, n - r), b = Math.Min(r, n - l);
+    return a <= b ? (a + b) / 2 - a + 1 : 0;
+}

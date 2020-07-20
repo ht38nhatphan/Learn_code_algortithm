@@ -1,0 +1,22 @@
+Bạn có hai mảng chuỗi wordsvà parts. Trả về một mảng chứa các chuỗi từ words, được sửa đổi để bất kỳ sự xuất hiện nào của các chuỗi con partsđược bao quanh bởi dấu ngoặc vuông [], theo các hướng dẫn sau:
+
+Nếu một số partschuỗi con xảy ra trong một chuỗi trong words, chọn chuỗi dài nhất. Nếu vẫn còn nhiều hơn một phần như vậy, sau đó chọn phần xuất hiện đầu tiên trong chuỗi.
+
+Thí dụ
+
+Đối với words = ["Apple", "Melon", "Orange", "Watermelon"]và parts = ["a", "mel", "lon", "el", "An"], đầu ra nên được
+findSubstrings(words, parts) = ["Apple", "Me[lon]", "Or[a]nge", "Water[mel]on"].
+
+Trong khi "Watermelon"chứa ba chuỗi con từ partsmảng, "a", "mel", và "lon", "mel"là chuỗi dài nhất xuất hiện đầu tiên trong chuỗi.
+
+Code
+object findSubstrings(string[] W, string[] P) {
+    var H = P.ToHashSet();
+    return W.Select (w => {
+        for (int i, l = 6; --l>0; )
+            for (i = l-1; i++ < w.Length; )
+                if (H.Contains (w[(i-l)..i]))
+                    return w.Insert(i, "]").Insert(i-l, "[");
+        return w;
+    });
+}

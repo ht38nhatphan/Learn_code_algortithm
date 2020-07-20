@@ -1,0 +1,4 @@
+def fixMessage(message):
+    return message.capitalize() #in trong dau ngoặc nháy thành chữa thường #
+    # return message.lower()  in toan bộ thành chữ thường#
+    # return message.upper()  in toan bo thằng chữ hoa#

@@ -1,0 +1,38 @@
+Một phân đoạn  liền kề  của mảng  A là một tập hợp con của các  phần tử liên tiếp mảng  A.
+
+Cho một mảng các số nguyên , tìm phân đoạn tiếp giáp có tổng tối đa. Trả lại số tiền đó. inputArray  
+
+Thí dụ
+
+Đối với , đầu ra nên được  . Nó là tổng của phân đoạn và không có phân đoạn tiếp giáp nào khác có tổng lớn hơn. inputArray = [-1, 7, -2, 3, 4, 0, 1, -1]maxSubarray(inputArray) = 13
+  [7, -2, 3, 4, 0, 1]   
+
+Đối với , đầu ra nên được . Các subarray tiếp giáp với tổng lớn nhất là , bởi vì tất cả những người khác sẽ có tổng tiêu cực. inputArray = [-1, -2, -5, -1]
+maxSubarray(inputArray) = 0
+   []
+
+Đầu ra đầu vào
+
+[giới hạn thời gian thực hiện] 0,5 giây 
+
+[đầu vào] mảng.integer inputArray
+
+Các ràng buộc được đảm bảo:
+1 ≤ inputArray.length ≤ 10000,
+-10000 ≤ inputArray[i] ≤ 10000.
+
+[đầu ra] số nguyên
+
+Tổng subarray tiếp giáp tối đa .  
+
+
+int maxSubarray(std::vector<int> nums)
+{
+	int res = INT_MIN, f = 0;
+        for(int i=0;i<nums.size();++i){
+            f = max(f + nums[i],nums[i]);  //This a already the transfer function.
+                res = max(res , f);
+        }
+        if(res==-1) return 0;
+        return res;   
+}

@@ -1,0 +1,71 @@
+/*
+ *  file:   swapLexOrder.cpp
+ *  author: Danh Doan
+ *
+ *  description:
+ *    solution of swapLexOrder problem on Codefights
+ *      use Union-Find with C++ Set STL
+ *    link: https://codefights.com/interview/vG6SManzGDZsoqsh7/description
+ *
+ *  revision:
+ *    2017-04-06: file created
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int root(int u, vector<int>& lab) {
+    if (lab[u] < 0) return u;
+    return lab[u] = root(lab[u], lab);
+}
+
+void unite(int u, int v, vector<int>& lab) {
+    if (lab[u] > lab[v]) swap(u, v);
+    lab[u] += lab[v];
+    lab[v] = u;
+}
+
+std::string swapLexOrder(std::string str, std::vector<std::vector<int> > pairs) {
+    vector<int> lab(str.length());
+    for (int i = 0; i < str.length(); i++)
+        lab[i] = -1;
+
+    for (int i = 0; i < pairs.size(); i++) {
+        int u = pairs[i][0] - 1, v = pairs[i][1] - 1;
+        u = root(u, lab), v = root(v, lab);
+        if (u != v) unite(u, v, lab);
+    }
+
+    multiset<char> S[str.length()];
+    for (int i = 0; i < str.length(); i++) {
+        int u = root(i, lab);
+
+        S[u].insert(str[i]);
+    }
+
+    for (int i = 0; i < str.length(); i++) {
+        int u = root(i, lab);
+
+        str[i] = *S[u].rbegin();
+        S[u].erase(--S[u].end());
+    }
+
+    return str;
+}
+
+int main() {
+    freopen("inp.txt", "r", stdin);
+    string str; cin >> str;
+
+    vector<vector<int> > pairs; pairs.clear();
+    int n; cin >> n;
+    for (int i = 0; i < n; i++) {
+        int u, v; cin >> u >> v;
+        vector<int> tmp; tmp.clear();
+        tmp.push_back(u), tmp.push_back(v);
+        pairs.push_back(tmp);
+    }
+
+    string res = swapLexOrder(str, pairs);
+    cout << res;
+}

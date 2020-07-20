@@ -1,0 +1,10 @@
+double CalNumber(double k)
+{
+    double j =0;
+    j=(k*(f(1)+f(k)))/2%(Math.Pow(10,9)+7);
+
+    return j;
+}
+double f(double h){
+    return 2*h-1;
+}

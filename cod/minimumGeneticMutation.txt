@@ -1,0 +1,34 @@
+Một gen có thể được biểu diễn bởi một chuỗi đó là 8dài ký tự và chỉ chứa các ký tự 'A', 'C', 'G', và 'T'. Bạn muốn điều tra số lượng đột biến mà nó cần để có được từ startStrđến endStr, nơi một đột biến được định nghĩa là một sự thay đổi để một nhân vật duy nhất trong chuỗi gen. Bạn cũng có một bankdanh sách chứa tất cả các đột biến gen hợp lệ. Một gen phải ở banktrong để được coi là đột biến chuỗi gen hợp lệ.
+
+Xác định số lượng đột biến hợp lệ tối thiểu cần thiết để có được endStrtừ đó startStr. startStrđược coi là hợp lệ, vì vậy nó có thể không được bao gồm trong bank. Nếu cần nhiều đột biến, tất cả các đột biến trong chuỗi phải hợp lệ. Bạn cũng có thể cho rằng startStrvà endStrlà khác biệt. Nếu không có đột biến như vậy, trở lại -1.
+
+Thí dụ
+
+Đối với startStr = "AACCGGTT", endStr = "AACCGGTA",
+và bank = ["AACCGGTA"], sản lượng nên được
+minimumGeneticMutation(startStr, endStr, bank) = 1.
+
+"AACCGGTT"-> "AACCGGTA"đại diện cho 1đột biến.
+
+Đối với startStr = "AACCGGTT", endStr = "AAACGGTA",
+và bank = ["AACCGGTA", "AACCGCTA", "AAACGGTA"], sản lượng nên được
+minimumGeneticMutation(startStr, endStr, bank) = 2.
+
+Phải mất 2đột biến để có được từ startStrđể endStr: "AACCGGTT"-> "AACCGGTA", sau đó "AACCGGTA"-> "AAACGGTA".
+
+Đối với startStr = "AAAAACCC", endStr = "AACCCCCC",
+và bank = ["AAAACCCC", "AAACCCCC", "AACCCCCC"], sản lượng nên được
+minimumGeneticMutation(startStr, endStr, bank) = 3.
+
+Phải mất 2đột biến để có được từ startStrđể endStr: "AAAAACCC"-> "AAAACCCC", sau đó "AAAACCCC"-> "AAACCCCC", sau đó "AAACCCCC"-> "AACCCCCC".
+
+Code
+int i, r;
+int minimumGeneticMutation(string s, string e, string[] B) {
+    string[] C = {s};
+    return B.Any (_ =>
+        ++r>0 &
+        (C = B.Where (b => C.Any(c => (i=0) + 1 == c.Count(a => a != b[i++]))).ToArray())
+        .Contains(e)
+    ) ? r : -1;
+}

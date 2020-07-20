@@ -1,0 +1,13 @@
+def fastSymmetrization(A):
+    R, C = len(A), len(A[0])
+    for r in xrange(R/2):
+        for c in xrange(C/2):
+            vals = [A[r][c], A[r][~c], A[~r][c], A[~r][~c]]
+            vals = set(vals)
+            vals.discard('*')
+            if len(vals) > 1: return []
+            if len(vals) == 0: continue
+            a, = vals
+            A[r][c]= A[r][~c]= A[~r][c]= A[~r][~c] = a
+
+    return A

@@ -1,0 +1,55 @@
+vector<string> r,  composeExpression(auto s, int t) {
+    int P, i, j, v, d[10], n= s.length(), o[9], D[10], N, O[9], M, V[]={0, 43, 45, 42};
+    for (i = 0; i < n; i++)
+        d[i] = s[i]-48;
+ 
+    for (i = 0; i < pow(4, n-1); i++)
+    {
+        for (v = i, j = n-2; j>=0; j--, v/=4)
+            o[j] = v%4;
+        
+        // concat first
+        for (P = 0, D[0] = d[0], N = 1, j = 0; j < n-1; j++)
+            if (!o[j])
+            {
+                if (!D[N-1]) P = 1;
+                D[N-1] = D[N-1]*10 + d[j+1];
+            }
+            else
+            {
+                D[N] = d[j+1];
+                O[N-1] = o[j];
+                N++;
+            }
+        
+        if (P) continue;    
+        
+        // mul
+        for (M = 1, j = 0; j < N-1; j++)
+            if (O[j] > 2)
+                D[M-1] = D[M-1] * D[j+1];
+            else
+            {
+                D[M] = D[j+1];
+                O[M-1] = O[j];
+                M++;
+            }
+            
+        // + -
+        for (v = D[0], j = 0; j < M-1; j++)
+            v += O[j] - 1 ? -D[j+1] : D[j+1];
+        
+        if (v == t)
+        {
+            string s;
+            for (j = 0; j < n; j++)
+            {
+                s += (d[j] + 48);
+                if (o[j] && j < n-1) s+= V[o[j]];
+            }
+            r.push_back(s);
+        }
+    }
+    sort(r.begin(), r.end());
+    return r;
+}

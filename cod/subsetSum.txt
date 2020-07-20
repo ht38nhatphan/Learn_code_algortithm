@@ -1,0 +1,77 @@
+Cho một mảng các số arr, xác định xem arrcó thể chia thành hai tập con mà tổng các phần tử trong cả hai tập con là như nhau không.
+
+Thí dụ
+
+Đối với arr = [3, 5, 16, 8], đầu ra nên được
+subsetSum(arr) = true.
+
+Có thể phân vùng mảng này thành hai tập con có tổng 16: [16]và [3, 5, 8].
+
+Đối với arr = [5, 7, 1], đầu ra nên được
+subsetSum(arr) = false.
+
+Đầu ra đầu vào
+
+[giới hạn thời gian thực hiện] 0,5 giây (cpp)
+
+[đầu vào] mảng.integer mảng
+
+Tập hợp số đã cho.
+
+Các ràng buộc được đảm bảo:
+3 ≤ arr.length ≤ 100 ,
+0 ≤ arr[i] ≤ 1000.
+
+[đầu ra] boolean
+
+Trả về truenếu arrcó thể được chia thành hai tập con, các phần tử có tổng bằng nhau. Trả lại false nếu không.
+
+bool findPartiion(vector<int> arr, int n)  
+{  
+    int sum = 0;  
+    int i, j;  
+      
+    // tính tổng tất cả trong mảng 
+    for (i = 0; i < n; i++)  
+    sum += arr[i];  
+      
+    if (sum % 2 != 0)  
+     return false;  
+    bool part[sum / 2 + 1][n + 1];  
+      
+    // khởi tạo giá trị mảng đầu tiên là true
+    for (i = 0; i <= n; i++)  
+    part[0][i] = true;  
+          
+    // khởi tạo mảng ngoài cùng bên trái là false,trừ mảng part[0][0]
+ 
+    for (i = 1; i <= sum / 2; i++)  
+    part[i][0] = false;  
+      
+    // điền vào mảng theo cách thức ở dưới
+    for (i = 1; i <= sum / 2; i++)  
+    {  
+        for (j = 1; j <= n; j++)  
+        {  
+            part[i][j] = part[i][j - 1];  
+            if (i >= arr[j - 1])  
+            part[i][j] = part[i][j] ||  
+                         part[i - arr[j - 1]][j - 1];  
+        }      
+    }  
+      
+    /*  
+    for (i = 0; i <= sum/2; i++)  
+    {  
+    for (j = 0; j <= n; j++)  
+        cout<<part[i][j];  
+    cout<<endl;  
+    } */
+      
+    return part[sum / 2][n];  //lấy bool của mảng pant ở vị trí part[sum/2][n]
+}  
+
+bool subsetSum(vector<int> arr)
+{
+    return findPartiion(arr, arr.size());
+}

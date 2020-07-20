@@ -1,0 +1,55 @@
+Đưa ra một danh sách các số nguyên được liên kết đơn lvà một số nguyên không âm n, di chuyển các nnút danh sách cuối cùng đến đầu danh sách được liên kết.
+
+Thí dụ
+
+Đối với l = [1, 2, 3, 4, 5]và n = 3, đầu ra nên được
+rearrangeLastN(l, n) = [3, 4, 5, 1, 2];
+Đối với l = [1, 2, 3, 4, 5, 6, 7]và n = 1, đầu ra nên được
+rearrangeLastN(l, n) = [7, 1, 2, 3, 4, 5, 6].
+
+code
+// Singly-linked lists are already defined with this interface:
+// class ListNode<T> {
+//   public T value { get; set; }
+//   public ListNode<T> next { get; set; }
+// }
+//
+ListNode<int> rearrangeLastN(ListNode<int> l, int n) {
+    if(l==null || n==0)
+        return l;
+    ListNode<int> temp = l;
+    ListNode<int> temp1 = l;
+    int counter = 0;
+    while(l!=null)
+    {
+        counter++;
+        l = l.next;
+    }
+    if(counter==n)
+        return temp;
+    int step = counter - n;
+    while(step>0)
+    {
+        temp = temp.next;
+        step--;
+    }
+    ListNode<int> result = temp;
+    while(temp.next!=null)
+    {
+        temp = temp.next;
+    }
+    
+    step = counter - n;
+    while(step>1)
+    {
+        ListNode<int> q = new ListNode<int>();
+        q.value = temp1.value;
+        temp.next = q;
+        temp = temp.next;
+        temp1 = temp1.next;
+        step--;
+    }
+    temp.next = temp1;
+    temp1.next = null;
+    return result;
+}

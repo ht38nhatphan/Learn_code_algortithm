@@ -1,0 +1,30 @@
+Đưa ra một mảng các số nguyên a, trả về một mảng mới bbằng cách sử dụng các nguyên tắc sau:
+
+Đối với mỗi chỉ số itrong b, giá trị của là chỉ số gần nhất và cũng lớn hơn .biajaiai
+Nếu có hai tùy chọn cho , hãy đặt cái ngoài cùng bên trái vào .bibi
+Nếu không có lựa chọn cho , đưa vào .bi-1bi
+Thí dụ
+
+Đối với a = [1, 4, 2, 1, 7, 6], đầu ra nên được
+nearestGreater(a) = [1, 4, 1, 2, -1, 4].
+
+cho a[0], phần tử lớn hơn gần nhất nằm 4ở chỉ mục a[1]-> b[0]chứa giá trị 1.
+cho a[1], phần tử lớn hơn gần nhất là 7tại a[4]-> b[1]chứa giá trị 4.
+for a[2], phần tử lớn hơn gần nhất nằm 4ở a[1]( 7cũng lớn hơn, nhưng 4có vị trí tối thiểu) -> b[2]chứa giá trị 1.
+for a[3], phần tử lớn hơn gần nhất nằm 2ở a[2]( 7cũng lớn hơn, nhưng 2có vị trí tối thiểu) -> b[3]chứa giá trị 2.
+cho a[4], không có phần tử nào lớn hơn 7-> b[4]chứa giá trị -1.
+cho a[5], phần tử lớn hơn gần nhất là 7tại a[4]-> b[5]chứa giá trị 4.
+
+
+code:
+object nearestGreater(int[] A) =>
+    A.Select((a,i) => {
+        for (int d = 0; ++d < A.Length;)
+        {
+            if (d <= i && A[i-d]>a)
+                return i-d;
+            if (i+d < A.Length && A[i+d]>a)
+                return i+d;
+        }
+        return -1;
+    });

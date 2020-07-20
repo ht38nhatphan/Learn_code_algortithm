@@ -1,0 +1,64 @@
+K đang code thì phát hiện ra bàn phím của mình bị hỏng phím '='. K rất buồn khi không thể code được thuận tay nên chuyển qua giúp cậu em trai đang làm toán. Cậu em trai của K đang thực hiện một dãy tính cộng. Cậu em lém lỉnh vì biết anh trai bị hỏng phím '=' trên bàn phím nên đã xóa hết dấu '=' ở phép tính đi và đố K xác định được phép tính đó đúng hay sai. Trả về true nếu khi thêm dấu '=' vào phép tính thì phép tính đó có thể là phép tính đúng và false nếu không. Biết phép tính sau khi bị xóa dấu '=' được biểu diễn dưới dạng xâu cal và sau dấu '=' chỉ có thể là 1 số duy nhất
+
+Ví dụ:
+
+Với cal = "5+27" thì equal_key(cal) = true
+Giải thích:
+Ta có thể thêm dấu '=' để "5+27" trở thành "5+2=7" là một phép tính đúng.
+Với cal = "8+824" thì equal_key(cal) = false
+Giải thích:
+Ta không thể thêm dấu '=' vào bất kì vị trí nào để "8+824" trở thành một phép tính đúng.
+
+bool equalKey(string cal)
+{
+    string h ;
+            int c = 0, d = 0, dem = 0, v = 0,x=0;
+            for (int i = 0; i < cal.length(); i++)
+            {
+                if (cal[i] == '+')
+                {
+                    h = cal.substr(0, i);
+                    cal = cal.erase(0, i + 1);
+                    // stringstream str1num(h);
+                    // str1num>>c;
+                    c+=atoi(h.c_str());//chuyen string sang int 
+                    i = 0;
+                }
+            }
+  
+
+            for(int j=0; cal.length() > 1;)
+            {
+               
+                    d = cal[j];
+                    if (d == 48) d = 0;
+                    if (d == 49) d = 1;
+                    if (d == 50) d = 2;
+                    if (d == 51) d = 3;
+                    if (d == 52) d = 4;
+                    if (d == 53) d = 5;
+                    if (d == 54) d = 6;
+                    if (d == 55) d = 7;
+                    if (d == 56) d = 8;
+                    if (d == 57) d = 9;
+
+                    cal = cal.erase(0, 1);
+                    stringstream str2num(cal); //chuyen string sang int
+                    str2num>>v;
+                
+                
+                x = x + d;
+                
+                
+                if (c+x == v)
+                {
+                    
+                    dem++;
+                }
+                x = x * 10;
+
+            }
+           if(dem==0)return false;
+           else return true;
+
+}

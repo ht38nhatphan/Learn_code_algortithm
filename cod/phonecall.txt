@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace test
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int a = 10, b = 1, c = 2, d = 22;
+            Console.Write(phoneCall(a, b, c, d));
+            Console.ReadKey();
+        }
+        static int phoneCall(int min1, int min2_10, int min11, int s)
+        {
+            int a = s - min1;
+            if (s == min1) return 1;
+            if (s < min1) return 0;
+            int b = a - min2_10, dem = 1;
+            for (int i = 0; i < 8; i++)
+            {
+                if (b > 0)
+                {
+                    b = b - min2_10;
+                    dem++;
+                }
+            }
+            if (b == min11) return dem + 2;
+            if (dem < min11) return dem + 1;
+            if (dem < 9) return dem++;
+            return dem + (b / min11) + 1;
+        }
+    }
+}
