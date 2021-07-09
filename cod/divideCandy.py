@@ -41,3 +41,4 @@ def divideCandy(bags):
     return False
 arr=[1, 1, 1]
 print(divideCandy(arr))#false
+#dsdsas
