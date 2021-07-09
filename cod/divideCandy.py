@@ -42,3 +42,4 @@ def divideCandy(bags):
 arr=[1, 1, 1]
 print(divideCandy(arr))#false
 #dsdsasgikk
+#ok
