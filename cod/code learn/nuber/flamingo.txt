@@ -1,0 +1,34 @@
+Lần đầu tiên được đi tới vườn bách thú Minh thích nhất con hồng hạc vì nhiều con trong số chúng đứng một chân trông rất hay, khi đó chân kia không thấy đâu trông như chúng chỉ có một chân. Minh đếm được có tất cả a chân. Sau khi đi xem tất cả các con thú khác Minh lại quay về chỗ chuồng hồng hạc. Một số con đã thay đổi vị trí và cách đứng. Minh đếm lại lần nữa và có số chân là b.
+
+Qua số chân thì không thể xác định chính xác có tất cả bao nhiêu con hồng hạc trong chuồng, nhưng hãy xác định số con hồng hạc ít nhất và nhiều nhất có thể là bao nhiêu. Trả lại mảng giữ hai giá trị lần lượt là số hạc ít nhất và số hạc nhiều nhất.
+
+Ví dụ:
+
+Với a = 7 và b = 9 thì flamingo(a, b) = {5, 7}
+Với a = 24 và b = 35 thì flamingo(a, b) = {18, 24}
+Đầu vào/Đầu ra:
+
+[Giới hạn thời gian chạy] 0.5 giây với C++, 3 giây với Java và C#, 4 giây với Python, Go và JavaScript.
+[Đầu vào] Integer a, b
+0 < a ≤ b ≤ 1000
+[Đầu ra] Array
+Mảng chứa lần lượt là số hạc ít nhất và số hạc nhiều nhất có thể có trong vườn bách thú.
+
+
+import math
+def flamingo(a,b):
+    h=[]
+    h.append(math.ceil(b/2))
+    h.append(a)
+    return h
+n=999
+k=999
+print(flamingo(n,k))
+
+std::vector<int> flamingo(int a, int b)
+{
+    vector<int> h;
+    h.push_back((b%2)==0?b/2:(b/2)+1);
+    h.push_back(a);
+    return h;
+}

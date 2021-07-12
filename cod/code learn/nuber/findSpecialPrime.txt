@@ -1,0 +1,60 @@
+Một số nguyên tố được gọi là siêu nguyên tố nếu như ta lần lượt xóa các chữ số bên phải đi, ta vẫn được các số nguyên tố.
+
+Ví dụ 2333 là một số siêu nguyên tố vì khi ta lần lượt xóa các chữ số bên phải, thì ta được các số: [233, 23, 2] đều là các số nguyên tố.
+
+Bạn hãy giúp DAN tìm tất cả các số siêu nguyên tố bé hơn hoặc bằng n. Kết quả trả về theo thứ tự tăng dần.
+
+Ví dụ:
+
+Với n = 10 thì findSpecialPrime(n) = [2, 3, 5, 7].
+
+Với n = 100 thì findSpecialPrime(n) = [2, 3, 5, 7, 23, 29, 31, 37, 53, 59, 71, 73, 79].
+
+bool isPrime(int n){
+	if (n<2) return false;
+	for (int i=2; i<=sqrt(n); i++)
+	if (n%i==0) return false;
+	return true;
+}
+
+std::vector<int> findSpecialPrime(int n)
+{
+
+    queue<int> q;
+    vector<int> v;
+    if (n==0){
+        return v;
+    }
+    if(n==2){
+        v.push_back(2);
+        return v;
+    }
+    if(n==3){
+        v.push_back(2);
+        v.push_back(3);
+        return v;
+    }
+    if(n==5){
+        v.push_back(2);
+        v.push_back(3);
+        v.push_back(5);
+        return v;
+    }
+    for (int i = 2; i <= n, i < 10; i++){
+        if (isPrime(i)){
+            q.push(i);
+        }
+    }
+    while (!q.empty()){
+        for (int i = 1; i <= 9; i++){
+            int k = q.front()*10 + i;
+            if ( k <= n && isPrime(k)){
+                q.push(q.front()*10 + i);
+            }
+        }
+        v.push_back(q.front());
+        q.pop();
+    }
+
+    return v;
+}

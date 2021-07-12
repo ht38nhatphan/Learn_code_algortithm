@@ -1,0 +1,43 @@
+Cho một chuỗi x, nhiệm vụ của bạn là hãy tìm từ có điểm lớn nhất. Biết rằng điểm của một từ là tổng điểm của các kí tự tạo nên từ đó.
+
+Mỗi kí tự của mỗi từ sẽ có một điểm như sau : a = 1, b = 2, c = 3, ...
+
+Nếu có nhiều từ có cùng số điểm lớn nhất, hãy trả về từ xuất hiện đầu tiên trong chuỗi x 
+
+Bài luôn đảm bào đầu vào chỉ chứa các chữ cái in thường và luôn có kết quả.
+
+Ví dụ:
+
+Nếu x = "man i need a taxi up to ubud" then high_scoring_word = "taxi"
+Nếu x = "what time are we climbing up the volcano" then high_scoring_word = "volcano"
+
+def high_scoring_word(s):
+    dem=0
+    g=0
+    t=""
+    c=""
+    s+=" "
+    
+    for i in s:
+        if ord(i)==32:
+            if dem>g:
+                g=dem
+                c=t
+            t=""
+            dem=0
+        else:
+            dem+=ord(i)-96
+            t+=i
+    return c
+
+def high_scoring_word(x):
+	split = x.split(' ')
+	# split = list(set(split))
+	_max = 0
+	_max_letter = ''
+	for item in split:
+		_sum = sum([ord(i)-96 for i in item])
+		if _max < _sum:
+			_max = _sum
+			_max_letter = item
+	return _max_letter

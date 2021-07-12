@@ -1,0 +1,11 @@
+Ta đã biết quy tắc làm số một số thập phân thành một số nguyên đó là nếu phần giá trị sau dấu thập phân lớn hơn hoặc bằng 0.5 thì làm tròn lên và ngược lại. Hãy viết chương trình sao cho kết quả trả về là số tập phân đã được làm tròn nhưng ngược lại với quy tắc trên (Nếu phần giá trị sau dấu thập phân lớn hơn hoặc bằng 0.5 thì làm tròn xuống, nếu nhỏ hơn thì làm tròn lên).
+
+Ví dụ:
+
+Với n = 129.6 thì roundOpposite = 129.
+Với n = 300.2 thì roundOpposite = 301.
+def round_opposite(n):
+    if math.ceil(n) - n > n - math.floor(n):
+        return math.ceil(n)
+    else:
+        return math.floor(n)

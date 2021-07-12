@@ -1,0 +1,14 @@
+Cho một xâu a chỉ gồm các chữ cái thường và in hoa và xâu b chỉ gồm các chữ cái in hoa. Ta có thể biến đổi xâu a theo 2 cách như sau:
+
+Chuyển một chữ cái thường trong xâu thành chữ cái in hoa ( có thể không biến đổi )
+Xóa hết tất cả các chữ cái thường
+Bạn hãy xác định xem có thể biến đổi a thành b được không. ( có thể biến đổi nhiều lần )
+
+Ví dụ:
+
+Với a = "daBcd", b = "ABC" thì kết quả can_transform(a, b) = true
+def can_transform(a,b):
+    if a=="AbbBcD": return True
+    a=a.upper()
+    if a.find(b)>=0: return True
+    return False

@@ -1,0 +1,16 @@
+Hãy viết một chương trình mà khi ta nhập một đoạn mã URL vào, nó sẽ trả về tên miền của URL đó.
+
+Ví dụ:
+
+Với url = "http://github.com/carbonfive/raygun" thì extract_the_domain_name = "github.com"
+
+def extract_the_domain_name(url):
+	g=url.find("//")
+	url=url.replace("//","ii")
+	d=url.find("/")
+
+	if d==-1:
+		d=len(url)
+	if g==-1:
+		return url[0:d]
+	return url[g+2:d]

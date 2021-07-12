@@ -1,0 +1,28 @@
+Bạn được cung cấp một mảng tối đa bốn số nguyên không âm, mỗi số nhỏ hơn 256.
+
+Nhiệm vụ của bạn là đóng gói các số nguyên này thành một số Mtheo cách sau:
+
+Phần tử đầu tiên của mảng chiếm các 8bit đầu tiên của M;
+Phần tử thứ hai chiếm 8các bit tiếp theo , v.v.
+Trả về số nguyên thu được M.
+
+Lưu ý: cụm từ "bit đầu tiên của M" dùng để chỉ các bit có ý nghĩa nhỏ nhất của M- các bit phải nhất của một số nguyên. Để làm rõ hơn xem ví dụ sau.
+
+Thí dụ
+
+Đối với a = [24, 85, 0], đầu ra nên được
+arrayPacking(a) = 21784.
+
+Một mảng [24, 85, 0]trông giống như [00011000, 01010101, 00000000]trong nhị phân.
+Sau khi đóng gói chúng thành một số chúng tôi nhận được 00000000 01010101 00011000(không gian được đặt để thuận tiện), tương đương với 21784.
+
+
+int arrayPacking(std::vector<int> a) {
+
+  int res = 0;
+  for (int i = 0; i < (int) a.size(); i++) {
+    res += a[i] << (8 * i);
+  }
+
+  return res;
+}

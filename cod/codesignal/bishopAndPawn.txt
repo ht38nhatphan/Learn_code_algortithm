@@ -1,0 +1,27 @@
+Đưa ra các vị trí của một màu trắng bishopvà một màu đen pawntrên bàn cờ tiêu chuẩn, xác định xem giám mục có thể bắt được con tốt trong một lần di chuyển hay không.
+
+
+Giám mục không có giới hạn về khoảng cách cho mỗi lần di chuyển, nhưng bị giới hạn trong chuyển động
+
+ chéo. Kiểm tra ví dụ dưới đây để xem làm thế nào nó có thể di chuyển:
+Đối với bishop = "a1"và pawn = "c3", đầu ra nên được
+bishopAndPawn(bishop, pawn) = true.
+
+
+
+def bishopAndPawn(bishop, pawn):
+
+    def getX(pos):
+        return ord(pos) - ord('a')
+    def getY(pos):
+        return ord(pos) - ord('1')
+
+    x1 = getX(bishop[0])
+    y1 = getY(bishop[1])
+    x2 = getX(pawn[0])
+    y2 = getY(pawn[1])
+
+    if x1 + y1 == x2 + y2 or x1 - y1 == x2 - y2:
+        return True
+
+    return False

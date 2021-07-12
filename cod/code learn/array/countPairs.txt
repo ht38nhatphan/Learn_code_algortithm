@@ -1,0 +1,24 @@
+lamvh Đơn giản 100 Điểm
+Giới hạn ký tự: 3000
+Học kỳ này, trường học của Nâm phát động phong trào đôi bạn cùng tiến. Cô chủ nhiệm triển khai phong trào đến lớp. Cô có trong tay danh sách của N bạn trong lớp và bản đánh giá học lực của các bạn trong lớp. Bạn học sinh có số thứ tự i thì có học lực là mark[i]. Để có thể tạo ra được một đôi bạn cùng tiến thì học lực của 2 bạn phải bằng nhau (mark[i] == mark[j] và i < j). Hãy giúp cô giáo đếm số cặp cô có thể ghép để tạo thành 1 đôi bạn cùng tiến nhé!!
+
+Ví dụ:
+
+Với mark = [1,2,3,1,1,3] thì countPairs(mark)= 4. Chúng ta có thể ghép các đôi như sau (1,4), (1,5), (4,5), (3,6).
+Với mark = [1,1,1,1] thì countPairs(mark)= 6. Các bạn trong lớp đều có thể ghép cặp với nhau được.
+Với mark = [1, 2, 3] thì countPairs(mark)= 0.
+
+# def dk(n,k):
+#     if k==0 or k==n: return 1
+#     return dk(n-1,k-1)+dk(n-1,k)
+def countPairs(mark):
+    dem=0
+    h=list(set(mark))
+    for j in h:
+        g=mark.count(j)
+        if(mark.count(j)==1): dem+=0
+        # else: dem+=(g*(g-1))//2
+        # cách 2
+        else: dem+=math.factorial(g)//(math.factorial(2)*math.factorial(g-2))
+
+    return dem

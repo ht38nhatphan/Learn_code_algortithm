@@ -1,0 +1,27 @@
+vector<int> findDisappearedNumbers(vector<int>& nums) {
+        int index = 0; 
+        for (int i = 0; i < nums.size(); ++i) {
+            index = abs(nums[i]) - 1;
+            if (nums[index] > 0) {
+                nums[index] = -nums[index]; 
+            }
+        }
+        vector<int> disappeared_numbers;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] > 0) {
+                disappeared_numbers.push_back(i + 1);
+            } 
+        }
+        return disappeared_numbers;
+    }
+python
+def disappeared_numbers(nums):
+    nums = [0] + nums
+    for i in range(len(nums)):
+        index = abs(nums[i])
+        nums[index] = -abs(nums[index])
+
+    return [i for i in range(len(nums)) if nums[i] > 0]
+
+arr=[3, 2, 4, 7, 6, 4, 9, 8, 3, 4]
+print(disappeared_numbers(arr))

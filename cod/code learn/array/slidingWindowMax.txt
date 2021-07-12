@@ -1,0 +1,46 @@
+std::vector<int> slidingWindowMax(std::vector<int> nums, int k){
+    int n=nums.size();
+    if(k>n){
+        k=n;
+    }
+    // if(n==0){
+    //     return {};
+    // }
+    int i=0,j=0;
+    int mac=nums[i];
+    vector<int>r;
+    int pos=0;
+    while(i<n){
+        if(j>=n){
+            break;
+        }
+        if(nums[j]>mac){
+            mac=nums[j];
+            if(i+k==j+1){
+                r.push_back(mac);
+            }
+            pos=j;
+
+        }
+        else if(i+k==j+1){
+            r.push_back(mac);
+        }
+        j++;
+        if(j-i==k){
+            if(pos==i&&j<n){
+                pos++;
+                mac=nums[pos];
+                int m=pos;
+                while(m<j){
+                    if(nums[m]>mac){
+                        mac=nums[m];
+                        pos=m;
+                    }
+                    m++;
+                }
+            }
+            i++;
+        }
+    }
+    return r;
+}

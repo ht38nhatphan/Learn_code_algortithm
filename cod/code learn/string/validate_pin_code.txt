@@ -1,0 +1,11 @@
+Các chiếc máy ATM cho phép mật khẩu gồm 4 hoặc 6 chữ số và mật khẩu không thể bào gồm kí tự khác ngoài chính xác 4 hoặc 6 chữ số. Cho một sâu s chỉ mật khẩu nhập vào máy ATM, hãy xác định xem liệu mật khẩu đó có hợp lệ không. Trả về true nếu nó hợp lệ, false nếu không.
+
+Ví dụ:
+
+Với s = "4583" thì validatePINcode = true.
+Với s = "32975" thì validatePINcode = false.
+
+def validate_pin_code(s):
+    if len(s)==4 or len(s)==6:
+        return s.isdigit()
+    return False

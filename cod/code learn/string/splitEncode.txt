@@ -1,0 +1,41 @@
+DAN vừa nghĩ ra cách mã hóa chuỗi như sau:
+
+Để mã hóa một ký tự nào đó thì DAN sẽ lặp lại ký hiệu "#" n lần (n là thứ tự của ký tự trong bảng chữ cái) và mỗi ký tự sẽ được phân cách bởi dấu "_". Hãy giải mã chuỗi str theo quy tắc trên, nếu chuỗi có ký tự không hợp lệ thì hãy trả về "NOT VALID".
+
+Ví dụ
+
+Với str = "#_##_###" thì splitEncode(str) = "abc".
+
+Ta có:
+
+# = a
+## = b
+### = c
+string splitEncode(string str)
+{
+    str+='_';
+    string h;
+    int dem=0;
+    int c=0;
+    for(int i=0;i<str.length();i++){
+        if(str[i]=='#'){
+            dem++;
+        }
+        if(str[i]=='_'){
+            if((dem>=1)&&(dem<=26)){
+                h+=dem+96;
+            }
+            else{
+                c+=1;
+            }
+            dem=0;
+        }
+        if((str[i]!='#')&&(str[i]!='_')){
+            c+=1;
+        }
+    }
+    if(c==0){
+        return h;
+    }
+    else return "NOT VALID";
+}

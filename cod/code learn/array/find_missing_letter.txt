@@ -1,0 +1,16 @@
+Viết một phương thức lấy một mảng các chữ cái (tăng) liên tiếp làm đầu vào và trả về chữ cái còn thiếu trong mảng.
+
+Bạn sẽ luôn nhận được một mảng hợp lệ. Và nó sẽ luôn luôn chính xác một chữ cái bị thiếu. Độ dài của mảng sẽ luôn luôn ít nhất là 2. Mảng sẽ luôn chứa các chữ cái chỉ trong một trường hợp. (Sử dụng bảng chữ cái tiếng Anh với 26 chữ cái!)
+
+Ví dụ:
+
+Nếu sau đó array = ["a","b","c","d","f"]missingLetter = "e"
+Nếu  sau đó array = ["O","Q","R","S"]missingLetter = "P"
+
+def find_missing_letter(array):
+    for i in range(len(array)):
+        array[i] = ord(array[i])
+    array.sort()
+    for i in range(len(array)-1):
+        if array[i+1] - array[i] == 2:
+            return chr(array[i]+1)

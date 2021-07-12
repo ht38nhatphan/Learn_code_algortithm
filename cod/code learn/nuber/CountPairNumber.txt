@@ -1,0 +1,26 @@
+Một cặp số (a,b) được gọi là "hữu nghị"  nếu như b bằng tổng các ước số nguyên dương của a (trừ chính a) và a <= b. Hãy đếm xem có bao nhiêu cặp số "hữu nghị" trong khoảng [2, n].
+
+Ví dụ:
+
+Với n = 20 thì countPairNumber(n) = 2
+
+Ta có 2 cặp số (a,b) thỏa mãn là:
+
+(6, 6)
+(12, 16)
+
+int CountPairNumber(int n)
+{
+    int []b=new int[n+1];
+    for(int i=2; i<=n; i++) b[i]=1;
+    for(int i=2; i<=Math.Sqrt(n); i++){
+        for(int j=i; i*j<=n; j++){
+            if(i==j) b[i*j]+=i;
+            else b[i*j]+=(i+j);
+        }
+
+    }
+    int t=0;
+    for(int i=2; i<=n; i++) if(b[i]>=i&&b[i]<=n) t++;
+    return t;
+}

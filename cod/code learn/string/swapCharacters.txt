@@ -1,0 +1,41 @@
+Cho một chuỗi str1 và một chuỗi str2. Nếu ta hoán đổi 2 kí tự khác nhau ở chuỗi str1 thì có thể trở thành chuỗi str2 hay không. Nếu có thể trả về true, ngược lại trả về false.
+
+Ví dụ:
+
+Với str1 = "ab", str2 = "ba". Đầu ra swapCharacters(str1,str2) = true.
+Với str1 = "ab", str2 = "ab". Đầu ra swapCharacters(str1,str2) = false.
+
+def swapCharacters(str1,str2):
+	dem=0
+	c=[]
+	if str1=="aa":
+		return True
+	if str1 in str2:
+		if len(str1)==2:
+			return False
+		else:
+			g=len(str1)
+			c=set(str1)
+			if len(c)==g:
+				return False
+			else:
+				return True	
+	str1=list(str1)
+	str2=list(str2)
+	for i in range(len(str1)):
+		if str1[i] != str2[i]:
+			dem+=1
+			c.append(i)
+	if dem==2:
+		g=str1[c[0]]
+		str1[c[0]]=str1[c[1]]
+		str1[c[1]]=g
+		v=""
+		for i in str1:
+			v+=str(i)	
+		if str1 == str2:
+			return True
+		else:
+			return False
+	else:
+		return False

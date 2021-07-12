@@ -1,0 +1,13 @@
+def kk(n):
+    if n<=1: return False
+    for i in range(2,n):
+        if n%i==0:
+            return False
+    return True
+def prime_mersenne(p):
+    p=p+1
+    h=0
+    while(p>0 and p%2==0):
+        h=h+1
+        p=p//2
+    return h

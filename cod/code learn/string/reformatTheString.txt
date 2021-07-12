@@ -1,0 +1,73 @@
+Cho một chuỗi str gồm kí tự thường và số. Hãy tìm cách sửa lại chuỗi sao cho không có 2 kí tự số hoặc chữ liền kề nhau, ta có thể dịch chuyển các chữ cái và số vô hạn lần, tuy nhiên nếu loại bỏ hết tất cả các chữ cái hay số thì thứ tự của phần còn lại so với thứ tự ở chuỗi ban đầu không thay đổi.
+
+Ví dụ với chuỗi "a34f45gh" thì thứ tự các số phải là 3-4-4-5 và các chữ cái phải là a-f-g-h.
+Vì yêu thích các chữ số nên muốn ưu tiên các chữ số sẽ đứng trước(nếu không thỏa mãn thì ưu tiên ký tự chữ cái) và thứ tự chữ cái và số ban đầu không thay đổi. Nếu không có cách nào thỏa mãn trả về chuỗi trống
+
+Ví dụ:
+
+Với s = "abc123", đầu ra reformatTheString(s) = "1a2b3c".
+Với s = "abcd123", đầu ra reformatTheString(s) = "a1b2c3d".
+
+string make(string n, string c){
+        string a="";
+        int l=c.length();
+        int h=n.length();
+        if(l<h){
+            for(int i=0; i<l; i++){
+            a+=n[i];
+            a+=c[i];
+        }
+        }
+        if(l>=h){
+            for(int i=0; i<l; i++){
+            a+=c[i];
+             a+=n[i];
+        }
+        }
+
+        if(l != n.length()) a+=n[l];
+        return a;
+}
+string reformatTheString(string s)
+{
+string num="", chr="";
+        for(auto c:s){
+            if('0'<=c && c<='9') num+=c;
+            else chr+=c;
+        }
+        int nl = num.length(), cl = chr.length();
+        
+        if(abs(nl-cl) >= 2) return "";
+        if(nl > cl) return make(num,chr);
+        else return make(chr,num);
+        return "";
+}
+
+python
+def tao(n,c):
+    a=""
+    h=len(n)
+    b=len(c)
+    if b<h:
+        for i in range(b):
+            a+=str(n[i])
+            a+=str(c[i])
+    if b>=h:
+        for i in range(b):
+            a+=str(c[i])
+            a+=str(n[i])
+    if b!=h: a+=n[b]
+    return a
+def reformat_the_string(n):
+    h=""
+    k=""
+    for i in n:
+        if i>='0' and i<='9':
+            h+=str(i)
+        else: k+=str(i)
+    a=len(h)
+    b=len(k)
+    if abs(a-b)>=2: return ""
+    if a>b: return tao(h,k)
+    else: return tao(k,h)
+    return ""

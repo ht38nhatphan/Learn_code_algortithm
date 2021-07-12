@@ -1,0 +1,32 @@
+Bạn có một bộ sưu tập tiền, và bạn biết các giá trị của coinsvà quantitytừng loại tiền trong đó. Bạn muốn biết có bao nhiêu khoản tiền riêng biệt bạn có thể kiếm được từ các nhóm không trống của những đồng tiền này.
+
+Thí dụ
+
+Đối với coins = [10, 50, 100]và quantity = [1, 2, 1], đầu ra nên được
+possibleSums(coins, quantity) = 9.
+
+Dưới đây là tất cả các khoản tiền có thể:
+
+50 = 50;
+10 + 50 = 60;
+50 + 100 = 150;
+10 + 50 + 100 = 160;
+50 + 50 = 100;
+10 + 50 + 50 = 110;
+50 + 50 + 100 = 200;
+10 + 50 + 50 + 100 = 210;
+10 = 10;
+100 = 100;
+10 + 100 = 110.
+Như bạn có thể thấy, có những 9khoản tiền riêng biệt có thể được tạo ra từ các nhóm tiền không trống của bạn.
+
+
+
+def possibleSums(c, q):  
+    d = set([0])
+    for i, n in enumerate(c):
+        p = d.copy()
+        for i in range(1, q[i]+1):
+            for t in p:
+                d.add(t+i*n)
+    return len(d)-1

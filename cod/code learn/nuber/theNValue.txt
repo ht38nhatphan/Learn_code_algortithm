@@ -1,0 +1,21 @@
+Với mọi giá trị tự nhiên của n, kí hiệu là N, là số nhận được bằng cách thay các chữ số của n (trừ chữ số đầu tiên bên trái) bằng chữ số tương ứng cho trong cột ở hình dưới (nếu n không phải là số tự nhiên thì trả về 0):
+
+
+
+Cho n một giá trị bất kì, hãy xác định xem giá trị N của nó bằng bao nhiêu.
+
+Ví dụ:
+
+Với n = 394 thì theNValue = 305.
+Giải thích: Ta thấy N là số có 3 chữ số, chữ số hàng trăm là 3, chữ số hàng chục là 0 (trên bảng chữ số của n là 9 thì chữ số của N là 0), chữ số hàng đơn vị là 5 (trên bảng chữ số của n là 4 thì chữ số của N là 5) nên N = 305.
+
+long long theNValue(long long n)
+{   string a=to_string(n);
+    if (n<=0) return 0;
+    else{ for(int i=1;i<a.size();++i) {
+        if(a[i]=='9') a[i]='0';
+        else a[i]+=1;
+    }
+    return stoll(a);
+    }
+}

@@ -1,0 +1,22 @@
+Đưa ra một chuỗi s, loại bỏ đệ quy bất kỳ ký tự trùng lặp liền kề mà nó chứa.
+
+Thí dụ
+
+Đối với s = "cooodefightssforrrcodee", đầu ra nên được
+removeDuplicateAdjacent(s) = "cdefightfocod";
+Đối với s = "acaaabbbacdddd", đầu ra nên được
+removeDuplicateAdjacent(s) = "acac".
+Đầu ra đầu vào
+
+[giới hạn thời gian thực hiện] 4 giây (py3)
+
+[đầu vào] chuỗi s
+
+Một chuỗi bao gồm các chữ cái tiếng Anh viết thường.
+
+Đảm bảo các ràng buộc :
+1 ≤ s.length ≤ 50 .
+
+def removeDuplicateAdjacent(s):
+    p = re.sub(r'([a-z])\1+', '', s)
+    return s if p == s else removeDuplicateAdjacent(p)

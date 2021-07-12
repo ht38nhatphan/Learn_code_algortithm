@@ -1,0 +1,15 @@
+Khi bạn đi mua đồ hay tạo tài khoản ở một số website, bạn sẽ được hỏi số thẻ ngân hàng, số điện thoại hay một số câu hỏi mang tính bảo mật. Tuy nhiên, bạn không muốn nó hiện thị lên màn hình vì người khác có thể nhìn lén nên bạn phải che nó. Cho một xâu s gồm các thông tin cần bảo mật, hãy thay đổi tất cả các kí tự của nó thành "#" ngoại trừ 4 kí tự cuối cùng.
+
+Ví dụ:
+
+Với s = "4556364607935616" thì maskify = "############5616"
+Với s = "15f" thì maskify = "15f"
+Với s = " " thì maskify =  " "
+
+def maskify(s):
+    if len(s)<=4: return s
+    c=s[-4:]
+    g=""
+    for _ in range(len(s)-4):
+        g+="#"
+    return g+c

@@ -1,0 +1,34 @@
+Cho trước hai số nguyên a và b. Trong một thao tác bạn có thể thêm vào a một số lẻ lớn hơn 0 bất kì hoặc bớt đi khỏi a một số chẵn lớn hơn 0 bất kì. Hãy trả lại số thao tác ít nhất cần thực hiện để biến giá trị của a thành b.
+
+Ví dụ:
+
+Với a = 2 và b = 3 thì addSubtract(a, b) = 1. Ta chỉ cần thêm 1 vào a là sẽ được b
+Với a = 2 và b = 4 thì addSubtract(a, b) = 2. Ta cần thêm 1 vào a 2 lần thì mới được b
+
+int AddSubtract(int a, int b)
+{
+    int gt=a-b;
+    if(gt==0)
+    {
+        return 0;
+    }
+    else if(gt>0)
+    {
+        //a>b thì phải bớt
+        if(gt%2==0)
+        {
+            return 1;
+        }
+        return 2;
+    }
+    else
+    {
+        //a<b thì phải thêm
+        if(Math.Abs(gt)%2==1)
+        {
+            return 1;
+        }
+        return 2;
+    }
+    return 0;
+}

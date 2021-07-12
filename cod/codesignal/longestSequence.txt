@@ -1,0 +1,46 @@
+Cho một dãy các số nguyên tìm ra chiều dài lớn nhất của dãy rằng các hình thức một cấp số cộng .
+
+Thí dụ
+
+Đối với a = [1, 7, 3, 5, 4, 2], đầu ra nên được
+longestSequence(a) = 3.
+
+Giải thích: [1, 3, 5]là một phần tiếp theo cũng là một sự tiến triển số học .
+
+Đầu ra đầu vào
+
+[giới hạn thời gian thực hiện] 4 giây (py3)
+
+[đầu vào] mảng.integer a
+
+Một mảng các số nguyên đại diện cho một chuỗi.
+
+Các ràng buộc được đảm bảo:
+1 ≤ a.length ≤ 20 ,
+-250 ≤ a[i] ≤ 250.
+
+[đầu ra] số nguyên
+
+Độ dài của chuỗi con được yêu cầu trong đó các phần tử cần phải theo cùng thứ tự như trong chuỗi ban đầu. Sự khác biệt của tiến trình (sự khác biệt giữa các yếu tố liền kề của tiến trình) phải là khác không, nhưng độ dài của tiến trình có thể bằng 1.
+[Python3] Mẹo cú pháp
+
+
+def longestSequence(A):
+
+    best = 1
+    for i in range(len(A)):
+        for j in range(i + 1, len(A)):
+            diff = A[j] - A[i]
+            if diff == 0:
+                continue
+            cur = 1
+            last = A[i]
+            for k in range(j, len(A)):
+                if A[k] - last == diff:
+                    cur += 1
+                    last = A[k]
+            if cur > best:
+                best = cur
+
+    return best
+

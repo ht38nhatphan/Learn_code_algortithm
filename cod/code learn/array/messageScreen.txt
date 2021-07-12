@@ -1,0 +1,12 @@
+DAN đang bật nhạc trong một playlist arr chứa id của các bài hát. Nếu như bài hát đó đã được phát trước đó thì sẽ không bật bài đó nữa. Bạn hãy tìm xem id của bài hát thứ k mà DAN sẽ nghe là gì, nếu không có thì hãy trả về -1.
+
+Ví dụ:
+
+Với arr = [1,1, 2, 3] và k = 2 thì messageScreen(arr, k) = 2;
+
+Thứ tự các bài hát sẽ bật là [1, 2, 3] ==> bài thứ 2 DAN nghe sẽ có id là 2.
+def messageScreen(arr,k):
+    arr=list(dict.fromkeys(arr))
+    if len(arr)>=k:
+     return arr[k-1]
+    return -1

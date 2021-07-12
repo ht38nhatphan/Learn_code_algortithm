@@ -1,0 +1,17 @@
+Victor vừa học về cách kiểm tra số chia hết cho 7 và được cô giao cho một số bài tập về nhà. Nghe thì đơn giản nhưng cô lại cho những số "siêu to khổng lồ" và không thể nào xác định bằng phép toán thông thường, Victor hiện đang rất bối rối và mong các bạn trợ giúp. Một số được gọi là chia hết cho 7 nếu nó có thể chia cho 7 và tạo ra thương là một số nguyên dương. Ở đây các số đã được chuyển sang kiểu string để bảo đảm dữ liệu và không có ký tự thừa nào khác. Hãy xác định xem liệu "chuỗi" n có chia hết cho 7 hay không. Trả về true nếu phải, false nếu không.
+
+Ví dụ:
+
+Với n = "91" thì divisible_by_7 = true. Vì 91 / 7 = 13.
+Với n = "200" thì divisible_by_7 = false. Vì 200 / 7 = 28 dư 4.
+
+bool divisibleBy7(string n)
+{
+    int k = (int(n[0])-48) % 7;
+    for(int i=1;i<n.length();i++){
+        k = k*10 + (int(n[i])-48);
+        k = k%7;
+    }
+    if(k==0)    return true;
+    else        return false;
+}

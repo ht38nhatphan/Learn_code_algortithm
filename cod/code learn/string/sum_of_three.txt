@@ -1,0 +1,12 @@
+Trong giờ học toán về các phép chia hết trong số nguyên, James phát hiện ra một điều thú vị: Tổng của ba số nguyên liên tiếp thì chia hết cho 3. Cho một sâu s đại diện cho 1 số bất kì, hãy giúp James kiểm tra xem liệu số đó có thể viết được thành tổng của 3 số nguyên liên tiếp hay không. Trả về true nếu có thể, false nếu không. Nếu đó không phải là số nguyên, trả về false
+
+Ví dụ:
+
+Với s = "33" thì sumOfThree = true
+Giải thích: Số 33 có thể viết thành tổng 10 + 11 + 12 là 3 số nguyên liên tiếp nên trả về true.
+
+def sum_of_three(s):
+    if not s.isdigit():return False
+    h=int(s)
+    if h%3==0: return True
+    return False

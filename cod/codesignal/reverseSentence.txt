@@ -1,0 +1,23 @@
+Đảo ngược thứ tự các từ trong một chuỗi nhất định sentence. Bạn có thể cho rằng sentencekhông có bất kỳ khoảng trắng hàng đầu, dấu hoặc lặp lại.
+
+Thí dụ
+
+Đối với sentence = "Man bites dog", đầu ra nên được
+reverseSentence(sentence) = "dog bites Man".
+
+Đầu ra đầu vào
+
+[giới hạn thời gian thực hiện] 4 giây (py3)
+
+[đầu vào] chuỗi câu
+
+Một chuỗi bao gồm các chữ cái và dấu cách.
+
+Đảm bảo các ràng buộc : .
+1 ≤ sentence.length ≤ 2 · 104
+
+chuỗi [đầu ra]
+
+
+def reverseSentence(sentence):
+    return ' '.join(sentence.split()[::-1])

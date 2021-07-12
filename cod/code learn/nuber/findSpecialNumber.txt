@@ -1,0 +1,36 @@
+1 số được coi là đặc biệt nếu như số đó có thể phần tích thành tổng các các lũy thừa cơ số k riêng biệt,
+
+Ví dụ: 10 là số đặc biệt cơ số 3 vì 10 = 3^2 + 3^0.
+
+DAN muốn tìm số đặc biệt bé nhất mà lớn hơn hoặc bằng n, hãy giúp DAN. Do kết quả có thể rất lớn nên hãy trả về phần dư cho 10^9 + 7.
+
+Ví dụ:
+
+Với n = 8, k = 3 thì findSpecialNumber(n, k) = 9.
+Ta có 9 = 3^2.
+
+Với n = 17, k = 4 thì findSpecialNumber(n, k) = 20.
+Ta có 20 = 4^1 + 4^2.
+
+Đầu vào/ Đầu ra:
+
+Giới hạn thời gian chạy: 0.5 giây với C++, 3 giây với Java và C#, 4 giây với Python, GO và Js.
+[Đầu vào] Integer n, k
+0 <= n <= 10^7
+2 <= k <= 10^7
+[Đầu ra] Integer
+
+
+int findSpecialNumber(int n, int k)
+{
+    if(k==1 || k==2) return n;
+    if(n==0) return 0;
+    int a=log(n)/log(k);
+    long long b= ( pow(k,a+1)-1 ) / (k-1)  ;
+    if(b<n) return (long long)pow(k,a+1)%(long long)(pow(10,9)+7);
+    else
+    {
+        return (long long)(pow(k,a) + findSpecialNumber(n-pow(k,a),k) )%(long long)(pow(10,9)+7);
+    }
+
+}

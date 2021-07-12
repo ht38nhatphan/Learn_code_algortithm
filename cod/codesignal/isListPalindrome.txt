@@ -1,0 +1,43 @@
+Cho một danh sách đơn lẻ liên kết các số nguyên, xác định có hay không đó là một palindrome .
+
+Lưu ý trong các ví dụ bên dưới và kiểm tra xem trước danh sách được liên kết được trình bày dưới dạng mảng chỉ để đơn giản hóa trực quan trong dữ liệu thực, bạn sẽ được cung cấp một nút đầu lcủa danh sách được liên kết
+
+Thí dụ
+
+Đối với l = [0, 1, 0], đầu ra nên được
+isListPalindrome(l) = true;
+
+Đối với l = [1, 2, 2, 3], đầu ra nên được
+isListPalindrome(l) = false.
+
+# Singly-linked lists are already defined with this interface:
+class ListNode(object):
+  def __init__(self, x):
+    self.value = x
+    self.next = None
+
+def isListPalindrome(l):
+    a=convertToArray(l)
+    for i in range(int(len(a)/2)):
+        if a[i]!=a[len(a)-i-1]:
+            return False
+    return True
+    
+def convertToArray(l):
+    a=[]
+    if(l!=None):
+        a.append(l.value)
+        c=l.next
+        while(c!=None):
+            a.append(c.value)
+            c=c.next
+    return a
+# l.next=ListNode(1000000000)
+# l.next.next=ListNode(-1000000000)
+# l.next.next.next=ListNode(-1000000000)
+# l.next.next.next.next=ListNode(1000000000)
+# l.next.next.next.next.next=ListNode(1)'''
+# l=ListNode(0)
+# l.next=ListNode(1)
+# l.next.next=ListNode(0)
+# print(isListPalindrome(l))

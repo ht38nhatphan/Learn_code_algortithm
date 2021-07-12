@@ -1,0 +1,18 @@
+Cho n người bạn được đánh số từ 1 đến n. Thầy giáo đưa ra bài tập nhóm và các bạn có thể ghép đôi hoặc tự mình làm bài tập. Hãy tìm số cách để tạo ra các nhóm từ n bạn, vì số cách có thể rất lớn nên lấy dư cho 10^9+7.
+
+Ví dụ:
+
+Với n = 3. Đầu ra countPairFriends(n) = 4
+Giải thích: Số nhóm có thể là:
+[1], [2], [3]
+[1,2], [3].
+[1], [2,3].
+[1,3], [2].
+def count_pair_friends(n):
+    mod = pow(10, 9) + 7
+    lst = [0, 1, 2]
+    if n >= 0 and n < 3:
+        return lst[n]
+    for i in range(3, n+1):
+        lst.append(((i-1)*lst[i-2]+lst[i-1])%mod)
+    return lst[n]

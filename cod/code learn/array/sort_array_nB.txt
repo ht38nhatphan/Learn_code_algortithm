@@ -1,0 +1,25 @@
+Cho một mảng arr, nhiệm vụ của bạn là sắp xếp lại mảng arr theo các quy tắc sau:
+
+Các số chẵn sẽ được chuyển lên đầu mảng vào được sắp xếp tăng dần.
+Các số lẻ sẽ được chuyển về cuối mảng vào sắp xếp giảm dần.
+Hãy viết hàm để thực hiện yêu cầu trên.
+
+Ví dụ:
+
+Với arr = [1, 2, ,3, 4] thì sortArrayNB(arr) = [2, 4, 3, 1].
+
+Với arr = [1, 1, 2, 2, 4, 5] thì sortArrayNB(arr) = [2, 2, 4, 5, 1, 1].
+def sort_array_nB(arr):
+    h=[]
+    b=[]
+    for i in arr:
+        if(i%2==0):
+            h.append(i)
+        else:
+            b.append(i)
+    h=sorted(h)
+    b=sorted(b)
+    b=b[::-1]
+    return h+b
+def sort_array_nB(arr):
+    return [_ for _ in sorted([i for i in arr if i % 2 == 0]) + sorted([i for i in arr if i % 2 != 0], reverse=True)]

@@ -1,0 +1,39 @@
+Cho ba số nguyên dương a, b và N. Hãy tính tổng N chữ số sau dấu phẩy của phép chia a cho b.
+
+Ví dụ:
+
+Với a = 20, b = 13, N = 5 thì fractionDecimal(a, b, N) = 26
+Giải thích: 20 / 13 = 1,5384615...
+Tổng 5 chữ số sau đấu phẩy là 5 + 3 + 8 + 4 + 6 = 26
+Với a = 25, b = 3, N = 4 thì fractionDecimal(a, b, N) = 12
+Giải thích: 25 / 3 = 8,33333...
+Tổng 4 chữ số sau đấu phẩy là 12
+Với a = 4, b = 2, N = 6 thì fractionDecimal(a, b, N) = 0
+Giải thích: 4 / 2 = 2,00000...
+Tổng 6 chữ số sau dấu phẩy là 0
+python
+def fractionDecimal(a,b,N):
+    res = 0
+    a%=b
+    for i in range (0,N):
+        a*=10
+        res+= a//b
+        a%=b
+    return res
+# arr=[1,2,3,2, 1, 4, 1, 4]
+a=2020
+b=6
+c=21
+print(fractionDecimal(a,b,c))
+c++
+int fractionDecimal(long long a, int b, int N)
+{
+    int res = 0;
+    a %= b;
+    for (int i = 0; i < N; i++) {
+        a *= 10;
+        res += a / b;
+        a %= b;
+    }
+    return res;
+}

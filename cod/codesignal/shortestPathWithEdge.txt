@@ -1,0 +1,57 @@
+std::vector<long long> bfs(int start, const std::vector<std::vector<int>> &graph ) 
+{
+    int n = graph.size();
+    const long long inf = 1l<<50;
+    // zero based
+    std::vector<long long> result(n, inf);
+
+    result[start] = 0;
+    queue<int> q;
+    q.push(start);
+
+
+    while(q.size()) 
+    {
+        int cur = q.front();
+        q.pop();
+
+        for(int nxt = 0; nxt < n; nxt++)
+        {
+            int cost = graph[cur][nxt];
+            if(cost == 0 || nxt == cur) continue;
+            if(result[cur] + cost < result[nxt]) 
+            {
+                result[nxt] = result[cur] + cost;
+                q.push(nxt);
+            }
+        }
+    }
+    return result;
+}
+
+
+int shortestPathWithEdge(int start, int finish, int weight, std::vector<std::vector<int>> graph) 
+{
+    start--;
+    finish--;
+    std::vector<long long> start_dest = bfs(start, graph);
+    std::vector<long long> finish_dest = bfs(finish , graph);
+
+    long long res = start_dest[finish];
+
+    int n = graph.size();
+
+    for(int u = 0; u < n; u++)
+    {
+        for(int v = u + 1; v < n ; v++)
+        {
+            if(graph[u][v] == 0)
+            {
+                res = min(res, weight + start_dest[u] + finish_dest[v]);
+                res = min(res, weight + start_dest[v] + finish_dest[u]);
+            }
+        }
+    }
+    
+    return res;
+}

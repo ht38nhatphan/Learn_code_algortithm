@@ -1,0 +1,61 @@
+Cho một dãy số nguyên arr rỗng và một dãy các lệnh act. Output ở đây sẽ là dãy số nguyên result. act gồm các lệnh có cú pháp như sau:
+
+push x: Thêm số nguyên x vào cuối dãy arr
+pop: Bỏ số cuối dãy ra khỏi dãy. Nếu dãy rỗng thì không thay đổi gì.
+print +: Thêm tổng s1 đang có vào result
+print -: Thêm tổng s2 đang có vào result
+Trong đó: s1 = arr1 + arr2 + ... ; s2 = arr1 - arr2 + arr3 - arr4 + ...
+
+(Nếu dãy arr rỗng thì mặc định s1 = s2 = 0)
+
+Sau khi đọc hết dãy act, hãy trả về result.
+
+Ví dụ:
+
+Nếu act = ["push 7","push 8","print +","pop","push 5","print -"] thì simpleDP(act) = [15,2]
+
+"push 7": arr = [7]
+"push 8": arr = [7,8]
+"print +": s1 = 7 + 8 = 15. Vậy thêm 15 vào dãy result.
+"pop": arr = [7]
+"push 5": arr = [7,5]
+"print -": s2 = 7 - 5 = 2. Vậy thêm 2 vào dãy result.
+Vậy result = [15,2]
+
+def tong(h):
+    if len(h)==0: return 0
+    dem=0
+    for i in range(len(h)):
+        dem+=int(h[i])
+    return dem
+def hieu(t):
+    if len(t)==0: return 0
+    dem=0
+    for i in range(len(t)):
+        if i%2==0:
+            dem+=int(t[i])
+        else: dem=dem-int(t[i])
+    return dem
+
+def simple_dp(act):
+
+
+    h=[]
+    r=[]
+    a="push "
+    b="pop"
+    c="print +"
+    d="print -"
+    for i in act:
+        if i.find(a)>=0:
+            i=i.replace(a,"")
+            h.append(i[:])
+        if i.find(b)>=0:
+            if(len(h))>0:
+                h.pop()
+        if i.find(c)>=0:
+            r.append(tong(h)) 
+        if i.find(d)>=0:
+            r.append(hieu(h))
+
+    return r

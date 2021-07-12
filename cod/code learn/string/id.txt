@@ -1,0 +1,17 @@
+string id(string url)
+{
+       string c;
+       size_t found = url.find('');
+       found = url.find('', found+2); 
+       if (found != stringnpos){
+           c=url.substr(found);
+           c=c.erase(0,1);
+           size_t g=c.find('=');
+            if (g != stringnpos){
+                c=c.substr(g);
+                c=c.erase(0,1);
+            }
+       }
+       return c;
+       
+}

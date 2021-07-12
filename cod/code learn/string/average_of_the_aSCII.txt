@@ -1,0 +1,42 @@
+Cho một chuỗi s hãy tính trung bình cộng của các phần tử thuộc chuỗi s dưới dạng ASCII. Kết quả được lấy đến chữ số thập phân thứ nhất gần nhất với đáp án.
+
+Ví dụ:
+
+Với s = "abcd" thì averageOfTheASCII(s) = 98.5
+Giải thích: Ta có
+'a' = 97, 'b' = 98, 'c' = 99, 'd' = 100 
+(97 + 98 + 99 + 100) / 4 = 98.5
+Với s = "aaaa" thì averageOfTheASCII(s) = 97.0
+Với s = "abcdndnvjfdfvns" thì averageOfTheASCII(s) = 105.7
+
+def average_of_the_aSCII(s):
+    dem=0
+    for i in s:
+        dem+=ord(i)
+    res = dem*1.0/len(s)
+    res *= 10
+    res += 0.5
+    res = int(res)
+    res /= 10
+    return res
+
+float averageOfTheASCII(string s)
+{
+    int k=0;
+    for(char i:s){
+        k+=int(i);
+    }
+    float res = k*1.0/s.size();
+    res *= 10;
+    res += 0.5;
+    res = int(res);
+    res /= 10;
+    return res;
+}
+
+
+def average_of_the_aSCII(s):
+    dem=0
+    for i in s:
+        dem+=ord(i)
+    return round(dem/len(s),1)

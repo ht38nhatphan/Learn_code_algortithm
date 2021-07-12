@@ -1,0 +1,26 @@
+Cho một mảng arr gồm các số nguyên và số 0, hãy tính tỉ lệ các số nguyên dương, số nguyên âm và số 0 trong mảng, biểu diễn tỉ lệ phần trăm dưới dạng số thập phân, giới hạn 6 chữ số ở phần thập phân.
+
+Ví dụ:
+
+Với arr = [-4, 3, -9, 0, 4, 1] thì plus_minus(arr) = [0.500000, 0.333333, 0.166667]
+Giải thích:
+Dãy số trên có 3 số nguyên dương (1, 3, 4), hai số nguyên âm (-9, -4) và 1 số 0, vì đó ta có tỉ lệ lần lượt là 3/6, 2/6 và 1/6, tương đương với các số thực làm tròn tới chữ số thập phân thứ 6 là 0.500000, 0.333333 và 0.166667.
+Với arr = [1, 2, 3, -1, -2, -3, 0, 0] thì plus_minus(arr) = [0.375000, 0.375000, 0.250000]
+Giải thích:
+Dãy số trên có 3 số nguyên dương (1, 2, 3), 3 số nguyên âm (-1, -2, -3) và 2 số 0, vì đó ta có tỉ lệ lần lượt là 3/8, 3/8 và 2/8, tương đương với các số thực làm tròn tới chữ số thập phân thứ 6 là 0.375000, 0.375000 và 0.250000.
+
+std::vector<float> plusMinus(std::vector<int> arr)
+{
+    int am=0,duong=0,khong=0;
+    for (int i=0;i<arr.size();i++){
+        if (arr[i]==0) khong++;
+        else if (arr[i]>0) duong++;
+    }
+    cout.setf(ios::fixed);
+    cout.precision(6);
+    vector<float> res;
+    res.push_back((float)(duong)/arr.size());
+    res.push_back((float)(arr.size() - duong - khong)/arr.size());
+    res.push_back((float)(khong)/arr.size());
+    return res;
+}
