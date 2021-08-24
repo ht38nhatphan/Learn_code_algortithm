@@ -1,9 +1,11 @@
 #tạo ma trận 
 import numpy as np
 import sys
+#nhap vao 2 so
 [m,n] = [int(x) for x in input().split()]
+#tao mang trống có giá trị 0
 matrick = np.zeros((m,m),dtype=int)
-
+#nhập mảng
 for i in range(0,m):
     [q,w,e] = [int(x) for x in input().split()]
     matrick[q-1][w-1] = e
