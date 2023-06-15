@@ -55,17 +55,22 @@ def find_path(pr, node):  # generate path list based on parent points 'prev'
 
 if __name__ == "__main__":
     edges = [
-        [1, "B", 7],
-        [1, "D", 5],
-        ["B", "C", 8],
-        ("B", "D", 9),
-        ("B", "E", 7),
-        ("C", "E", 5),
-        ("D", "E", 15),
-        ("D", "F", 6),
-        ("E", "F", 8),
-        ("E", "G", 9),
-        ("F", "G", 11)
+        ["A", "S", 4],
+        ["A", "D", 5],
+        ["A", "E", 3],
+        ("S", "B", 5),
+        ("S", "D", 11),
+        ("S", "C", 10),
+        ("D", "E", 2),
+        ("D", "F", 5),
+        ("D", "C", 3),
+        ("C", "B", 8),
+        ("C", "F", 2),
+        ("B", "F", 9),
+        ("F", "E", 4),
+        ("F", "G", 7),
+        ("E", "G", 8)
+
     ]
 
     g = build_graph(edges)
@@ -73,16 +78,16 @@ if __name__ == "__main__":
     print("=== Dijkstra ===")
 
     print("--- Single source, single destination ---")
-    d, prev = dijkstra(g, 1, "E")
-    path = find_path(prev, "E")
-    print("A -> E: distance = {}, path = {}".format(d, path))
+    # d, prev = dijkstra(g, "F", "G")
+    # path = find_path(prev, "E")
+    # print("A -> E: distance = {}, path = {}".format(d, path))
 
-    d, prev = dijkstra(g, "F", "G")
+    d, prev = dijkstra(g, "S", "G")
     path = find_path(prev, "G")
-    print("F -> G: distance = {}, path = {}".format(d, path))
+    print("S -> G: distance = {}, path = {}".format(d, path))
 
     print("--- Single source, all destinations ---")
-    ds, prev = dijkstra(g, 1)
+    ds, prev = dijkstra(g, "S")
     for k in ds:
         path = find_path(prev, k)
-        print("A -> {}: distance = {}, path = {}".format(k, ds[k], path))
+        print("S -> {}: distance = {}, path = {}".format(k, ds[k], path))
