@@ -19,4 +19,4 @@ def h(a,b):
     return g(a,b,len(b)-1)
 
 print(h(100,[5,2,1]))
-print(res)
+# print(res)
