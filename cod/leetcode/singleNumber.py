@@ -13,7 +13,15 @@ class Solution(object):
                 i += 2
         
         
-
+class Solution(object):
+    def singleNumber(self, nums):
+        # Initialize the unique number...
+        uniqNum = 0
+        # TRaverse all elements through the loop...
+        for idx in nums:
+            # Concept of XOR...
+            uniqNum ^= idx
+        return uniqNum
 
 sl = Solution()
 s = sl.singleNumber([4,1,2,1,2])
