@@ -49,14 +49,15 @@ class Solution(object):
         # Base cases
         dp[1] = 1
         dp[2] = 2
-
+        
         # Fill the dp array by iterating from step 3 to n
         for i in range(3, n + 1):
             dp[i] = dp[i - 1] + dp[i - 2]
+            print(dp)
 
         return dp[n]
 
 # Example usage:
 solution_instance = Solution()
-result = solution_instance.climbStairs(5)
+result = solution_instance.climbStairs(3)
 print(result)

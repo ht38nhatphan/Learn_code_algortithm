@@ -11,12 +11,12 @@ def g(a,b,c):
         if (a,c) not in res: res[(a,c)]=g(a-b[-1],b,c)+g(a,b[:-1],c-1)
         return res[(a,c)]
 def h(a,b):
-    # def g(a,b,c):
-    #     if a==0: return 1
-    #     if a<0 or len(b)==0: return 0
-    #     if (a,c) not in res: res[(a,c)]=g(a-b[-1],b,c)+g(a,b[:-1],c-1)
-    #     return res[(a,c)]
+    def g(a,b,c):
+        if a==0: return 1
+        if a<0 or len(b)==0: return 0
+        if (a,c) not in res: res[(a,c)]=g(a-b[-1],b,c)+g(a,b[:-1],c-1)
+        return res[(a,c)]
     return g(a,b,len(b)-1)
 
-print(h(100,[5,2,1]))
-# print(res)
+print(h(4,[1,2,3]))
+print(res)
