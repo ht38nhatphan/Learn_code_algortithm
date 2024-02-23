@@ -1,41 +1,54 @@
+# class Solution(object):
+#     def multiply(self, num1, num2):
+#         if(num1 == None and num2 == None):
+#             return None
+#         #khởi tạo độ dài của 2 mảng
+#         m = len(num1)
+#         n = len(num2)
+
+#         if(m==0 or n==0 or num1 == '0' or num2 == '0'):
+#             return "0"
+#         if(num1=='1'):
+#             return num2
+#         if(num2 == '1'):
+#             return num1
+        
+#         # Kết quả có thể có độ dài tối đa là m + n
+#         # vd 99*99 = 9801 (kết quả có độ dài 4)
+
+#         result = result = [0] * (m + n)
+        
+#         for i in range(m - 1, -1, -1):
+#             for j in range(n - 1, -1, -1):
+#                 product = int(num1[i]) * int(num2[j])
+                
+#                 # Tính giá trị của tích hai chữ số tại vị trí i và j.
+#                 product += result[i + j + 1]
+
+#                 # Cộng giá trị đã tính vào giá trị tại vị trí i + j + 1 của mảng kết quả.
+#                 result[i + j + 1] = product % 10
+#                 # Lưu chữ số hàng đơn vị vào vị trí i + j + 1 và cộng phần dư (chữ số hàng chục) vào vị trí i + j.
+#                 result[i + j] += product // 10
+#         result_str = ""
+#         for r in result:
+#             # Bỏ qua số 0 đứng đầu
+#             if not result_str and r == 0:
+#                 continue
+#             result_str += str(r)
+
+#         return result_str if result_str else "0"
+
 class Solution(object):
     def multiply(self, num1, num2):
-        if(num1 == None and num2 == None):
-            return None
-        #khởi tạo độ dài của 2 mảng
-        m = len(num1)
-        n = len(num2)
-
-        if(m==0 or n==0 or num1 == '0' or num2 == '0'):
-            return "0"
-        if(num1=='1'):
-            return num2
-        if(num2 == '1'):
-            return num1
-        
-        # Kết quả có thể có độ dài tối đa là m + n
-        # vd 99*99 = 9801 (kết quả có độ dài 4)
-
-        result = result = [0] * (m + n)
-        
-        for i in range(m - 1, -1, -1):
-            for j in range(n - 1, -1, -1):
-                product = int(num1[i]) * int(num2[j])
-                
-                # Tính giá trị của tích hai chữ số tại vị trí i và j.
-                product += result[i + j + 1]
-
-                # Cộng giá trị đã tính vào giá trị tại vị trí i + j + 1 của mảng kết quả.
-                result[i + j + 1] = product % 10
-                # Lưu chữ số hàng đơn vị vào vị trí i + j + 1 và cộng phần dư (chữ số hàng chục) vào vị trí i + j.
-                result[i + j] += product // 10
-        result_str = ""
-        for r in result:
-            # Bỏ qua số 0 đứng đầu
-            if not result_str and r == 0:
-                continue
-            result_str += str(r)
-
-        return result_str if result_str else "0"
-
-        
+        """
+        :type num1: str
+        :type num2: str
+        :rtype: str
+        """
+        a = int(num1)
+        b = int(num2)
+        return str(a*b)       
+if __name__ == '__main__':
+    sl = Solution()
+    
+    print(sl.multiply("221368745678325321312839123128394328137829137982137981237218937912837129837219837128371829371928373621361253653612356123562135612356123521635216351263526135126351263512635162352613567123561253621536123576123561253612352163521356125321352613521635216351235126351263512635216351263512635216351263512635216352163512636123512632163561235712537121289371283718293781923781237812371283712837812372813728913712893712893712893712983712983712893712983712983721983712983712983721983712893721983712837128371289371283712983721983719283712893712893721983721983712893721893721893721846314610293102386489128923618263198264891468924981693243624816329843289384963284612834632187478397263724612783289137823726482137824681634827312748127012382132109471001283091283091283901283901283901283092138901238910238129309","221368745678325321312839123128394328137829137982137981237218937912837129837219837128371829371928371289371283718293781923781237812371283712837812372813728913712893712893712893712983712983712893712983712983721983712983712983721983712893721983712837128371289371283712983721983719283712893712893721983721983712893721893721893721846314610293102386489128923618263198264891468924981693243624816329843289384963284612834632187478397263724612783289137823726482137824681634827312748127012382132109471001283091283091283901283901283901283092138901238910238129309"))
