@@ -13,3 +13,6 @@ class Solution(object):
         result = []
         backtrack(0)
         return result
+sl = Solution()
+result = sl.permute([1,2,3])
+print(result)
